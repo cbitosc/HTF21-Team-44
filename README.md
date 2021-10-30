@@ -7,10 +7,6 @@ Funtions :
 - Add the expriy date which will automatically erase the Pill after it expires
 - Notifies you at proper time to take the pill
 - CRUD operations
-
- ## How it works ?
  
- 
- :tv: Video tutorial on this same topic  
  Url : https://sayakongit.github.io/HTF21-Team-44/
  
