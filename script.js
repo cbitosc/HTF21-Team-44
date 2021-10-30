@@ -21,18 +21,26 @@ function setAlarm(e) {
         currentTime = getDateTime();
         if (String(time) == String(currentTime)) {
                  console.log("I did it?");
-                 showNotification();
+                 Push.create("Did you TakeYaPill?", {
+                    body: "Hey mate! It's time for your medicine. Don't forget to drink some water also.",
+                    icon: '/icon.png',
+                    timeout: 8000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
                  clearInterval(inter);
              }
     }, 1000);
 }
 
-function showNotification() {
-    const notification = new Notification("Take Meds", {
-        body: "Time to take meds"
+// function showNotification() {
+//     const notification = new Notification("Take Meds", {
+//         body: "Time to take meds"
 
-    });
-}
+//     });
+// }
 
 function getDateTime() {
     var now     = new Date(); 
