@@ -6,41 +6,60 @@ alarm.addEventListener('click', setAlarm);
 function setAlarm(e) {
     //e.preventDefault();
     const time = document.getElementById('medTime').value;
-    // alarmTime = new Date(time.value);
-    //alarmTime = new timen.value;
-    console.log(`Take Meds at ${time}`);
-    // now = new Date().toLocaleTimeString('en-US', { hour12: false, 
-    //     hour: "numeric", 
-    //     minute: "numeric"});
-    
-    // if (String(time) == String(now)) {
-    //     console.log("True");
-    // }
+    const med = document.getElementById('medName').value;
+    const exp = document.getElementById('medDate');
+    expDate = new Date(exp.value);
+    console.log(`Expires at ${expDate}`);
+    now = new Date();
+
+    let timeToExp = expDate - now;
+
+    if(timeToExp>=0) {
+        setTimeout(() => {
+            Push.create(`Oh no! ${med} has expired!`, { 
+                body: "You should not consume expired medicines.",
+                icon: '/icon.png',
+                timeout: 12000,
+                onClick: function () {
+                    window.focus();
+                    this.close();
+                }
+            });
+        }, timeToExp);
+    }
 
     var inter = setInterval(function(){
         currentTime = getDateTime();
         if (String(time) == String(currentTime)) {
-                 console.log("I did it?");
-                 Push.create("Did you TakeYaPill?", {
-                    body: "Hey mate! It's time for your medicine. Don't forget to drink some water also.",
-                    icon: '/icon.png',
-                    timeout: 8000,
+
+            if (med == "Water") {
+                Push.create(`It's time for Water!`, { 
+                    body: "Drink water to stay hydrated.",
+                    icon: '/water.png',
+                    timeout: 12000,
                     onClick: function () {
                         window.focus();
                         this.close();
                     }
                 });
+            }
+
+            else {
+                Push.create(`It's time for ${med}!`, { 
+                    body: "Hey mate! Take your medicine. Don't forget to drink some water too.",
+                    icon: '/icon.png',
+                    timeout: 12000,
+                    onClick: function () {
+                        window.focus();
+                        this.close();
+                    }
+                });
+            }
+                 
                  clearInterval(inter);
              }
     }, 1000);
 }
-
-// function showNotification() {
-//     const notification = new Notification("Take Meds", {
-//         body: "Time to take meds"
-
-//     });
-// }
 
 function getDateTime() {
     var now     = new Date(); 

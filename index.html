@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TakeYaPill</title>
+    <title>TakeYaPill | Medication Reminder App</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
 
   <body>
     <nav class="navbar">
-      <h1>TakeYaPill - Medicine Reminder</h1>
+      <h1>TakeYaPill - Medication Reminder</h1>
+      <p>An app that takes care of you!</p>
     </nav>
     <header class="flex-box">
       <section class="input-form container">
@@ -33,7 +34,12 @@
           </div>
           <div>
             <label>Expiry Date</label>
-            <input type="text" name="medDate" id="medDate" />
+            <input
+              type="text"
+              name="medDate"
+              id="medDate"
+              placeholder=" [yyyy-mm-dd]"
+            />
           </div>
           <div class="form-action-buttons">
             <input type="submit" value="ADD MEDICINE" id="alarm" />
